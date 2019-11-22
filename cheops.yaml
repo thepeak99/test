@@ -10,7 +10,7 @@ actions:
     image: {{ .Secrets.Image }}:{{ .Commit }}
     provider: aws
   - type: exec
-    image: {{ .Secrets.Image }}:{{ .Commit }}
+    image: {{ .Secrets.image }}:{{ .Commit }}
     commands:
       - ls
       - echo pito
