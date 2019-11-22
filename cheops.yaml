@@ -1,16 +1,16 @@
 containers:
   - context: .
-    tag: {{ .Vars.Repo }}/test
+    tag: {{ .Secrets.Image }}:{{ .Commit }}
     dockerfile: Dockerfile.test
     args:
       ARG1: patata
 
 actions:
   - type: push
-    image: {{ .Vars.Repo }}/test
+    image: {{ .Secrets.Image }}:{{ .Commit }}
     provider: aws
   - type: exec
-    image: {{ .Vars.Repo }}/test
+    image: {{ .Secrets.Image }}:{{ .Commit }}
     commands:
       - ls
       - echo pito

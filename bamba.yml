@@ -1,8 +1,0 @@
-- trigger: github.push
-  run:
-    - build: Dockerfile.test
-  after:
-    - image: bamba/github-check
-      environment: 
-        GITHUB_CHECK_DESCRIPTION: pito
-        GITHUB_CHECK_CONTEXT: bamba
