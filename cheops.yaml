@@ -1,0 +1,21 @@
+containers:
+  - context: .
+    tag: {{ .Vars.Repo }}/test
+    dockerfile: Dockerfile.test
+    args:
+      ARG1: patata
+
+actions:
+  - type: push
+    image: {{ .Vars.Repo }}/test
+    provider: aws
+  - type: exec
+    image: {{ .Vars.Repo }}/test
+    commands:
+      - ls
+      - echo pito
+notifiers:
+  - type: github
+  - type: generic
+    url: tato
+
