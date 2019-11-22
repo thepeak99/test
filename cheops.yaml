@@ -1,13 +1,13 @@
 containers:
   - context: .
-    tag: {{ .Secrets.Image }}:{{ .Commit }}
+    tag: {{ .Secrets.image }}:{{ .Commit }}
     dockerfile: Dockerfile.test
     args:
       ARG1: patata
 
 actions:
   - type: push
-    image: {{ .Secrets.Image }}:{{ .Commit }}
+    image: {{ .Secrets.image }}:{{ .Commit }}
     provider: aws
   - type: exec
     image: {{ .Secrets.image }}:{{ .Commit }}
