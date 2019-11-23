@@ -1,21 +1,24 @@
-containers:
-  - context: .
-    tag: {{ .Secrets.image }}:{{ .Commit }}
-    dockerfile: Dockerfile.test
-    args:
-      ARG1: patata
+builds:
+  - name: Image
+    branch: tato
+    containers:
+      - context: .
+        tag: {{ .Secrets.image }}:{{ .Commit }}
+        dockerfile: Dockerfile.test
+        args:
+          ARG1: patata
 
-actions:
-  - type: push
-    image: {{ .Secrets.image }}:{{ .Commit }}
-    provider: aws
-  - type: exec
-    image: {{ .Secrets.image }}:{{ .Commit }}
-    commands:
-      - ls
-      - echo pito
-notifiers:
-  - type: github
-  - type: generic
-    url: tato
+    actions:
+      - type: push
+        image: {{ .Secrets.image }}:{{ .Commit }}
+        provider: aws
+      - type: exec
+        image: {{ .Secrets.image }}:{{ .Commit }}
+        commands:
+          - ls
+          - echo pito
+    notifiers:
+      - type: github
+      - type: generic
+        url: tato
 
